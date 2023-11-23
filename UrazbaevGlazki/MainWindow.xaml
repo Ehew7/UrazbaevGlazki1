@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UrazbaevGlazki"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Urazbaev_Glazki" Height="450" Width="800" Icon="Resources/Глазки-save.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
@@ -15,8 +15,7 @@
         <Image Source="Resources/Глазки-save.png" HorizontalAlignment="Left"></Image>
         <TextBlock Text="Глазки" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         <Frame Grid.Row="1" Name="MainFrame" ContentRendered="MainFrame_ContentRendered" NavigationUIVisibility="Hidden"></Frame>
-        <Button Content="Назад" Name="BtnBack" Width="175" Height="30" HorizontalAlignment="Right" Margin="5"
+        <Button Content="Назад" Name="BtnBack" Background="#FFB175EE" Width="175" Height="30" HorizontalAlignment="Right" Margin="5"
                 Click="BtnBack_Click"></Button>
-        
     </Grid>
 </Window>
