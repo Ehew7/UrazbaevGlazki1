@@ -49,12 +49,13 @@ namespace UrazbaevGlazki
             }
         }
 
-        public int ProductCount
+        /*public int ProductCount
         {
             get
             {
                 return ProductSale.Count;
             }
         }
+        */
     }
 }

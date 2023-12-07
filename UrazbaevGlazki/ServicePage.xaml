@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:UrazbaevGlazki"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ServicePage">
+      Title="ServicePage"
+      IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
         
@@ -20,7 +21,10 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="10"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
+            
         </Grid.RowDefinitions>
+        <Button Content="Добавить агента" Name="AddButton" Click="AddButton_Click"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="2" Margin="0,0,8,0"></Button>
         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="0">
             <StackPanel Orientation="Horizontal" Margin="10">
                 <TextBox Name="Search" Height="30" HorizontalAlignment="Left" Width="335" Margin="0, 0, 10, 0" TextChanged="Search_TextChanged"/>
@@ -58,6 +62,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
 
                         <Image Width="150" Grid.Column="0" Grid.RowSpan="4"
@@ -88,7 +93,11 @@
                                 </Grid.RowDefinitions>
                                 <TextBlock Text="продаж за год" FontSize="16" Grid.Row="0" VerticalAlignment="Center"></TextBlock>
                                 <TextBlock Text="{Binding Phone}" FontSize="16" Grid.Row="1" VerticalAlignment="Center"></TextBlock>
-                                <TextBlock Text="{Binding Priority, StringFormat=Приоритетность: {0}}" FontSize="16" Grid.Row="2" VerticalAlignment="Center"  Margin="0, 0, 0, 10"></TextBlock>
+                                <TextBlock Text="{Binding Priority, StringFormat=Приоритетность: {0}}" FontSize="16" Grid.Row="2" VerticalAlignment="Center"  Margin="5"></TextBlock>
+                                <StackPanel Grid.Column="3" Grid.Row="4" Orientation="Horizontal">
+                                    <Button HorizontalAlignment="Left" Name="EditButton" Content="Редактировать" Click="EditButton_Click"></Button>
+                                </StackPanel>
+                              
                             </Grid>
                         </StackPanel>
                     </Grid>
@@ -96,6 +105,9 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Grid.ColumnSpan="3">
+            <StackPanel Grid.Column="3" Grid.Row="2" Orientation="Horizontal">
+               
+            </StackPanel>
             <TextBlock Name="TBCount" FontSize="20" Height="30"></TextBlock>
             <TextBlock Name="TBAllRecords" FontSize="20" Height="30"></TextBlock>
             <Button Name="LeftDirButton" Content="&lt;" Width="30" Height="30" Grid.Row="2"  HorizontalAlignment="Right"  Background="#B175EE" Click="LeftDirButton_Click"></Button>
