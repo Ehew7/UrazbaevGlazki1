@@ -68,65 +68,85 @@
     <Compile Include="AddEditPage.xaml.cs">
       <DependentUpon>AddEditPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddProdSale.xaml.cs">
+      <DependentUpon>AddProdSale.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Agent.cs">
-      <DependentUpon>UrazbaevglazkiModel.tt</DependentUpon>
+      <DependentUpon>UrazbaevModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AgentPriorityHistory.cs">
-      <DependentUpon>UrazbaevglazkiModel.tt</DependentUpon>
+      <DependentUpon>UrazbaevModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AgentType.cs">
-      <DependentUpon>UrazbaevglazkiModel.tt</DependentUpon>
+      <DependentUpon>UrazbaevModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EditPriority.xaml.cs">
+      <DependentUpon>EditPriority.xaml</DependentUpon>
     </Compile>
     <Compile Include="Manager.cs" />
     <Compile Include="Material.cs">
-      <DependentUpon>UrazbaevglazkiModel.tt</DependentUpon>
+      <DependentUpon>UrazbaevModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MaterialCountHistory.cs">
-      <DependentUpon>UrazbaevglazkiModel.tt</DependentUpon>
+      <DependentUpon>UrazbaevModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MaterialType.cs">
-      <DependentUpon>UrazbaevglazkiModel.tt</DependentUpon>
+      <DependentUpon>UrazbaevModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProdPage.xaml.cs">
+      <DependentUpon>ProdPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
-      <DependentUpon>UrazbaevglazkiModel.tt</DependentUpon>
+      <DependentUpon>UrazbaevModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductCostHistory.cs">
-      <DependentUpon>UrazbaevglazkiModel.tt</DependentUpon>
+      <DependentUpon>UrazbaevModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductMaterial.cs">
-      <DependentUpon>UrazbaevglazkiModel.tt</DependentUpon>
+      <DependentUpon>UrazbaevModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductSale.cs">
-      <DependentUpon>UrazbaevglazkiModel.tt</DependentUpon>
+      <DependentUpon>UrazbaevModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductType.cs">
-      <DependentUpon>UrazbaevglazkiModel.tt</DependentUpon>
+      <DependentUpon>UrazbaevModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ServicePage.xaml.cs">
       <DependentUpon>ServicePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Shop.cs">
-      <DependentUpon>UrazbaevglazkiModel.tt</DependentUpon>
+      <DependentUpon>UrazbaevModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Supplier.cs">
-      <DependentUpon>UrazbaevglazkiModel.tt</DependentUpon>
+      <DependentUpon>UrazbaevModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="UrazbaevglazkiModel.Context.cs">
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>UrazbaevModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UrazbaevModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UrazbaevglazkiModel.Context.tt</DependentUpon>
+      <DependentUpon>UrazbaevModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="UrazbaevglazkiModel.cs">
+    <Compile Include="UrazbaevModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UrazbaevglazkiModel.tt</DependentUpon>
+      <DependentUpon>UrazbaevModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="UrazbaevglazkiModel.Designer.cs">
+    <Compile Include="UrazbaevModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UrazbaevglazkiModel.edmx</DependentUpon>
+      <DependentUpon>UrazbaevModel.edmx</DependentUpon>
     </Compile>
     <Page Include="AddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddProdSale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditPriority.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -142,6 +162,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ProdPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ServicePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -170,12 +194,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EntityDeploy Include="UrazbaevglazkiModel.edmx">
+    <EntityDeploy Include="UrazbaevModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UrazbaevglazkiModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>UrazbaevModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="UrazbaevglazkiModel.edmx.diagram">
-      <DependentUpon>UrazbaevglazkiModel.edmx</DependentUpon>
+    <None Include="UrazbaevModel.edmx.diagram">
+      <DependentUpon>UrazbaevModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -445,20 +469,21 @@
     <Resource Include="agents\agent_98.png" />
     <Resource Include="agents\agent_99.png" />
     <Resource Include="Resources\picture.png" />
-    <Content Include="UrazbaevglazkiModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>UrazbaevglazkiModel.Context.cs</LastGenOutput>
-      <DependentUpon>UrazbaevglazkiModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="UrazbaevglazkiModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UrazbaevglazkiModel.edmx</DependentUpon>
-      <LastGenOutput>UrazbaevglazkiModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="UrazbaevModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UrazbaevModel.edmx</DependentUpon>
+      <LastGenOutput>UrazbaevModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="UrazbaevModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UrazbaevModel.edmx</DependentUpon>
+      <LastGenOutput>UrazbaevModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

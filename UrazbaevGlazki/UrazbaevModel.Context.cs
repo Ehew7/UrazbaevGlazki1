@@ -15,14 +15,12 @@ namespace UrazbaevGlazki
     
     public partial class Urazbaev_glazkiEntities : DbContext
     {
-
         private static Urazbaev_glazkiEntities _context;
 
         public static Urazbaev_glazkiEntities GetContext()
         {
             if (_context == null)
                 _context = new Urazbaev_glazkiEntities();
-
             return _context;
         }
         public Urazbaev_glazkiEntities()
@@ -48,5 +46,6 @@ namespace UrazbaevGlazki
         public virtual DbSet<ProductType> ProductType { get; set; }
         public virtual DbSet<Shop> Shop { get; set; }
         public virtual DbSet<Supplier> Supplier { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

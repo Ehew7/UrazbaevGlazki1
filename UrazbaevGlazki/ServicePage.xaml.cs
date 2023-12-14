@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace UrazbaevGlazki
 {
@@ -27,15 +29,15 @@ namespace UrazbaevGlazki
         List<Agent> CurrentPageList = new List<Agent>();
         List<Agent> TableList;
         int con = Urazbaev_glazkiEntities.GetContext().Agent.ToList().Count;
-
         public ServicePage()
         {
             InitializeComponent();
-            var currentServices = Urazbaev_glazkiEntities.GetContext().Agent.ToList();
-            AgentListView.ItemsSource = currentServices;
+            var currentAgent = Urazbaev_glazkiEntities.GetContext().Agent.ToList();
             ComboFilter.SelectedIndex = 0;
             ComboType.SelectedIndex = 0;
         }
+
+
         public void ChangePage(int direction, int? selectedPage)
         {
             CurrentPageList.Clear();
@@ -115,6 +117,23 @@ namespace UrazbaevGlazki
 
         }
 
+        private void AgentListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (AgentListView.SelectedItems.Count > 1)
+            {
+                BtnEditPriority.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BtnEditPriority.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void ComboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateAgent();
+        }
+
         public void UpdateAgent()
         {
             var currentAgent = Urazbaev_glazkiEntities.GetContext().Agent.ToList();
@@ -161,11 +180,11 @@ namespace UrazbaevGlazki
 
             if (ComboFilter.SelectedIndex == 3)
             {
-                currentAgent = currentAgent.OrderBy(p => p.Title).ToList();
+                currentAgent = currentAgent.OrderBy(p => p.Shop).ToList();
             }
             if (ComboFilter.SelectedIndex == 4)
             {
-                currentAgent = currentAgent.OrderByDescending(p => p.Title).ToList();
+                currentAgent = currentAgent.OrderByDescending(p => p.Shop).ToList();
             }
 
             if (ComboFilter.SelectedIndex == 5)
@@ -185,13 +204,6 @@ namespace UrazbaevGlazki
             ChangePage(0, 0);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {           
-            Manager.MainFrame.Navigate(new AddEditPage(null));
-        }
-
-
-
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
             UpdateAgent();
@@ -202,19 +214,9 @@ namespace UrazbaevGlazki
             UpdateAgent();
         }
 
-        private void ComboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void RightDirButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdateAgent();
-        }
-
-        private void AgentListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-        }
-
-        private void LeftDirButton_Click(object sender, RoutedEventArgs e)
-        {
-            ChangePage(1, null);
+            ChangePage(2, null);
         }
 
         private void PageListBox_MouseUp(object sender, MouseButtonEventArgs e)
@@ -222,31 +224,64 @@ namespace UrazbaevGlazki
             ChangePage(0, Convert.ToInt32(PageListBox.SelectedItem.ToString()) - 1);
         }
 
-        private void RightDirButton_Click(object sender, RoutedEventArgs e)
+        private void LeftDirButton_Click(object sender, RoutedEventArgs e)
         {
-            ChangePage(2, null);
+            ChangePage(1, null);
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new AddEditPage(null));
+
+            UpdateAgent();
         }
 
-        private void EditButton_Click(object sender, RoutedEventArgs e)
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new AddEditPage((sender as Button).DataContext as Agent));
+            UpdateAgent();
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (Visibility == Visibility.Visible)
+            UpdateAgent();
+        }
+        private void BtnEditPriority_Click(object sender, RoutedEventArgs e)
+        {
+            int p = 0;
+            foreach (Agent AgentLV in AgentListView.SelectedItems)
             {
-                Urazbaev_glazkiEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                AgentListView.ItemsSource = Urazbaev_glazkiEntities.GetContext().Agent.ToList();
+                if (p < AgentLV.Priority) p = AgentLV.Priority;
+            }
+            EditPriority window = new EditPriority(p);
+            window.ShowDialog();
+
+            if (string.IsNullOrEmpty(window.PriorityText.Text))
+            {
+                return;
+            }
+            foreach (Agent AgentLV in AgentListView.SelectedItems)
+            {
+                AgentLV.Priority = Convert.ToInt32(window.PriorityText.Text);
+            }
+            try
+            {
+                Urazbaev_glazkiEntities.GetContext().SaveChanges();
+                MessageBox.Show("информвция сохранена");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
             }
             UpdateAgent();
-            
         }
+
+        private void ProdBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new ProdPage((sender as Button).DataContext as Agent));
+        }
+        
+        
 
 
     }

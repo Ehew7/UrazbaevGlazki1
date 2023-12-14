@@ -131,6 +131,11 @@ namespace UrazbaevGlazki
                 }
             }
         }
+        private void ProdBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new ProdPage((sender as Button).DataContext as Agent));
+        }
+
     }
 
 }

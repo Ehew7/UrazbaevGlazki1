@@ -81,6 +81,7 @@
             <Button Content="Сохранить" Name="SaveBtn" Click="SaveBtn_Click" Margin="5"></Button>
             <Button Content="Удалить" Name="DeleteBtn" Click="DeleteBtn_Click" Margin="5"
                     Opacity="{Binding ID}"></Button>
+            <Button Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" Content="Продажи" Name="ProdBtn" Click="ProdBtn_Click" Margin="5" Height="30" Width="175" Background="#FFB175EE"></Button>
         </StackPanel>
     </Grid>
 </Page>
